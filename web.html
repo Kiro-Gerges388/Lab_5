@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scouts Website</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+    header {
+      background-color: #12648a;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+    .about {
+      padding: 2rem;
+      text-align: center;
+    }
+    .slideshow {
+      position: relative;
+      max-width: 100%;
+      height: 400px;
+      overflow: hidden;
+    }
+    .slideshow img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      position: absolute;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+    .slideshow img.active {
+      opacity: 1;
+    }
+    /* Side navigation */
+    .sidenav {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: #111;
+      overflow-x: hidden;
+      transition: 0.5s;
+      padding-top: 60px;
+    }
+    .sidenav a {
+      padding: 8px 8px 8px 32px;
+      text-decoration: none;
+      font-size: 20px;
+      color: #f1f1f1;
+      display: block;
+      transition: 0.3s;
+    }
+    .sidenav a:hover {
+      color: #000000;
+    }
+    .sidenav .closebtn {
+      position: absolute;
+      top: 0;
+      right: 25px;
+      font-size: 36px;
+    }
+    .menu-btn {
+      font-size: 30px;
+      cursor: pointer;
+      color: #ffffff;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <span class="menu-btn" onclick="openNav()">☰ Menu</span>
+  <h1>Welcome to Scouts</h1>
+</header>
+
+<div class="about">
+  <h2>About Us</h2>
+  <p>We are a community of scouts dedicated to learning, adventure, and teamwork.</p>
+</div>
+
+<div class="slideshow">
+  <img src="image1.jpg" class="active" alt="Scouts activity 1">
+  <img src="image2.jpg" alt="Scouts activity 2">
+  <img src="image3.jpg" alt="Scouts activity 3">
+</div>
+
+<!-- Side Navigation -->
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="lectures.html">Lectures</a>
+  <a href="scores.html">Scores</a>
+  <a href="events.html">Upcoming Events</a>
+</div>
+
+<script>
+  // Side nav functions
+  function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+  }
+  function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+  }
+
+  // Slideshow
+  let slides = document.querySelectorAll('.slideshow img');
+  let current = 0;
+  function showSlide() {
+    slides[current].classList.remove('active');
+    current = (current + 1) % slides.length;
+    slides[current].classList.add('active');
+  }
+  setInterval(showSlide, 3000); // change every 3 seconds
+</script>
+
+</body>
+</html>
